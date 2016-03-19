@@ -3,7 +3,7 @@
 <?php echo $this->Html->link('新規タスク登録','/Tasks/create');?>
 
 
-<h3><?php count($tasks) ;?>件のタスクが未完了です</h3>
+<h3><?php echo count($tasks) ;?>件のタスクが未完了です</h3>
 
 <table>
 <tr>
@@ -18,12 +18,12 @@
 
 <?php foreach ($tasks as $task): ?>
 <tr>
-    <td><?= $this->Html->link($task['Task']['id'],'Task/view'.$task['Task']['id']); ?></td>
+    <td><?= $this->Html->link($task['Task']['id'],'/Tasks/view/'.$task['Task']['id']); ?></td>
 
     <td><?= h($task['Task']['name']) ?></td>
     <td><?= h($task['Task']['due_date']) ?></td>
     <td><?= h($task['Task']['created']) ?></td>
-    <td><?= $this->Html->link('タスクを完了する','Task/done'); ?><td>
+    <td><?= $this->Html->link('タスクを完了する','/Tasks/done/'.$task['Task']['id']); ?><td>
 </tr>
 <?php endforeach;?>
 </table>
